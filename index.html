@@ -1,46 +1,138 @@
-<html>
-  <head>
-    <title>Emilio Lopez</title>
-    <link href='bootstrap/css/bootstrap.css' rel='stylesheet' />
-    <link href='bootstrap/css/bootstrap-responsive.css' rel='stylesheet' />
-    <script src='bootstrap/js/bootstrap.min.js'></script>
-  </head>
-  <body style='padding-top:60px;'>
-    <div class='navbar navbar-fixed-top'>
-      <div class='navbar-inner'>
-        <div class='container'>
-          <a class='brand' href='#'>
-            Emilio Lopez
-          </a>
-          <div class='nav-collapse'>
-            <ul class='nav'>
-              <li class='active'>
-                <a href='#'>
-                  About
-                </a>
-              </li>
-              <li>
-                <a href='resume.html'>
-                  Resume
-                </a>
-              </li>
-            </ul>
-          </div>
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<link href='bootstrap/css/bootstrap.css' rel='stylesheet' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css' />
+<script src='bootstrap/js/bootstrap.min.js'></script>
+<style>
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  background: black url("img/stars.jpg") repeat right top; 
+  color: white;
+}
+
+.container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.link {
+  stroke: #ccc;
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px 'Open Sans', Helvetica, Arial, sans-serif;
+  color: white;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      Emilio Lopez
+    </h1>
+    <div class="row">
+      <div class="col-md-6" style="min-width: 600px;">
+        <div id="svg"></div>
+      </div>
+      <div class="col-md-6">
+        <div id="info">
+
         </div>
       </div>
     </div>
-    <div class='container'>
-      <div class='hero-unit'>
-        <h1 style='margin-bottom: 20px;'>
-          Hello, I'm Emilio Lopez
-        </h1>
-        <p>
-          I go to Stanford. My favorite color is green. And I like coding. Also, I intend to put more stuff on here in the future when I have more time. For now, I just have my resume for your enjoyment.
-        </p>
-        <a class='btn btn-primary btn-large' href='resume.html' style='margin-top: 20px;'>
-          Check out my resume!
-        </a>
-      </div>
-    </div>
-  </body>
-</html>
+  </div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = 600,
+    height = 400
+
+var svg = d3.select("#svg").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .gravity(0.01)
+    .distance(100)
+    .charge(-100)
+    .size([width, height]);
+
+d3.json("graph.json", function(error, json) {
+  force
+      .nodes(json.nodes)
+      .links(json.links)
+      .linkDistance(100)
+      .start();
+
+  var foci = [{x: 250, y: 250}, {x: 100, y: 125}, {x: 400, y: 125}, {x: 250, y: 300}];
+
+  var link = svg.selectAll(".link")
+      .data(json.links)
+    .enter().append("line")
+      .attr("class", "link");
+
+  var node = svg.selectAll(".node")
+      .data(json.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .call(force.drag);
+
+  var defs = svg.append("defs").attr("id", "imgdefs")
+
+  var clipPath = defs.append('clipPath').attr('id', 'clip-circle')
+    .append("circle")
+    .attr("r", 16)
+    .attr("cy", 0)
+    .attr("cx", 0);
+
+  var clipPath = defs.append('clipPath').attr('id', 'clip-circle-big')
+    .append("circle")
+    .attr("r", 32)
+    .attr("cy", 0)
+    .attr("cx", 0);    
+
+  node.append("image")
+      .attr("xlink:href", function(d) { 
+        if (d.image) { 
+          return "/img/" + d.image;
+        } else return "http://placehold.it/32/" + color(d.group).substring(1) + "/ffffff&text=" + d.name[0]})
+      .attr("x", function(d) { return (d.focus == 0 ? -32: -16); })
+      .attr("y", function(d) { return (d.focus == 0 ? -32: -16); })
+      .attr("width", function(d) { return (d.focus == 0 ? 64: 32); })
+      .attr("height", function(d) { return (d.focus == 0 ? 64: 32); })
+      .attr("clip-path", function(d) { return (d.focus == 0 ? "url(#clip-circle-big)": "url(#clip-circle)"); });
+
+  node.append("text")
+      .attr("dx", 20)
+      .attr("dy", ".35em")
+      .style("font-size","16px")
+      .attr("fill", "white")
+      .text(function(d) { return d.name });
+
+  force.on("tick", function(e) {
+    var k = .1 * e.alpha;
+    json.nodes.forEach(function(o, i) {
+      if (o.focus) {
+        o.y += (foci[o.focus].y - o.y) * k;
+        o.x += (foci[o.focus].x - o.x) * k;
+      }
+    });
+
+    node
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });    
+    
+    link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+    
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  });
+});
+
+</script></body>

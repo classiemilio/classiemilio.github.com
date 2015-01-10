@@ -1,0 +1,33 @@
+{"nodes":[
+	{"name":"","group":1,"image":"me.jpg","focus":0},
+	{"name":"Projects","group":1,"focus":1},
+	{"name":"TimeTreble","group":2,"focus":1},
+	{"name":"Premonit","group":2,"focus":1},
+	{"name":"Boutique.ly","group":2,"focus":1},
+	{"name":"Jobs","group":1,"focus":2},
+	{"name":"Fun","group":1,"focus":3},
+	{"name":"RockMelt","group":3,"focus":2},
+	{"name":"StreamOnce","group":3,"focus":2},
+	{"name":"Jive","group":3,"focus":2},
+	{"name":"Stanford CS210","group":3,"focus":2},
+	{"name":"OneBox.io","group":3,"focus":2},
+	{"name":"Puzzles","group":4,"focus":3},
+	{"name":"Scuba Diving","group":4,"focus":3},
+	{"name":"Board Games","group":4,"focus":3}
+],
+"links":[
+	{"source":0,"target":1,"value":1},
+	{"source":1,"target":2,"value":1},
+	{"source":1,"target":3,"value":1},
+	{"source":1,"target":4,"value":1},
+	{"source":0,"target":5,"value":1},
+	{"source":0,"target":6,"value":1},
+	{"source":5,"target":7,"value":1},
+	{"source":5,"target":8,"value":1},
+	{"source":5,"target":9,"value":1},
+	{"source":5,"target":10,"value":1},
+	{"source":5,"target":11,"value":1},
+	{"source":6,"target":12,"value":1},
+	{"source":6,"target":13,"value":1},	
+	{"source":6,"target":14,"value":1}
+]}
