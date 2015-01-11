@@ -80,6 +80,13 @@ body .btn a:hover, body .btn a:active {
   margin-top: 20px;
 }
 
+.instruction {
+  color: #0088cc;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
+}
+
 .link {
   stroke: #ccc;
 }
@@ -163,6 +170,10 @@ fieldset[disabled] .btn-custom.active {
       <div class="row">
         <div class="col-md-6">
           <div id="svg"></div>
+          <div class="instruction">
+            <img src="/img/arrow.png" height="30" />
+            Hover over these circles!
+          </div>
         </div>
         <div class="col-md-5 col-md-offset-1">
           <div id="info-container">
@@ -403,6 +414,7 @@ d3.json("graph.json", function(error, json) {
     if (elem.length > 0 && !$(elem).is(".selected")) {
       $(".info-box.selected").removeClass("selected");
       $(elem).addClass("selected");
+      $('.instruction').remove()
     }
   });
 });
