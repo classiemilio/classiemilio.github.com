@@ -7,6 +7,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src='bootstrap/js/bootstrap.min.js'></script>
 <style>
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   background: black url("img/stars.jpg") repeat right top; 
@@ -15,41 +22,44 @@ body {
 
 .container {
   text-align: center;
-  margin-top: 40px;
-  position: relative;
 }
 
-.col {
-  float: left;
-  margin-right: 20px;
+body .btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+body .btn a {
+  color: white;
+}
+
+body .btn a:hover, body .btn a:active {
+  text-decoration: none;
 }
 
 .container #header {
   font-size: 60px;
 }
 
-.container .contact {
-  position: absolute;
-  top: 38px;
-  right: 0px;
-  text-align: left;
+#footer .contact {
+  text-align: center;
+  font-size: 24px;
+  line-height: 60px;
 }
 
-.container .contact li {
-  list-style: none;
-  font-size: 16px;
-}
-
-.fa-linkedin-square {
+.contact-linkedin a, .contact-linkedin .fa {
   color: #1884bb;
 }
 
-.fa-envelope-square {
-  color: #2ca02c;
+.contact-email a, .contact-email .fa {
+  color: #d62728;
 }
 
 #info-container {
   margin-top: 20px;
+  height: 505px;
 }
 
 #info-container .info-box {
@@ -79,143 +89,213 @@ body {
   font: 10px 'Open Sans', Helvetica, Arial, sans-serif;
   color: white;
 }
+
+#container {
+  position: relative;
+  min-height:100%;
+}
+
+#content {
+  padding-bottom:60px;
+}
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+   background:white;
+}
+
+.btn-custom { 
+  color: #FFFFFF; 
+  background-color: #008FD6; 
+  border-color: #008ED6; 
+} 
+ 
+.btn-custom:hover, 
+.btn-custom:focus, 
+.btn-custom:active, 
+.btn-custom.active, 
+.open .dropdown-toggle.btn-custom { 
+  color: #FFFFFF; 
+  background-color: #047FBD; 
+  border-color: #008ED6; 
+} 
+ 
+.btn-custom:active, 
+.btn-custom.active, 
+.open .dropdown-toggle.btn-custom { 
+  background-image: none; 
+} 
+ 
+.btn-custom.disabled, 
+.btn-custom[disabled], 
+fieldset[disabled] .btn-custom, 
+.btn-custom.disabled:hover, 
+.btn-custom[disabled]:hover, 
+fieldset[disabled] .btn-custom:hover, 
+.btn-custom.disabled:focus, 
+.btn-custom[disabled]:focus, 
+fieldset[disabled] .btn-custom:focus, 
+.btn-custom.disabled:active, 
+.btn-custom[disabled]:active, 
+fieldset[disabled] .btn-custom:active, 
+.btn-custom.disabled.active, 
+.btn-custom[disabled].active, 
+fieldset[disabled] .btn-custom.active { 
+  background-color: #008FD6; 
+  border-color: #008ED6; 
+} 
+ 
+.btn-custom .badge { 
+  color: #008FD6; 
+  background-color: #FFFFFF; 
+}
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="contact">
-      <ul>
-        <li>
-          <a href="mailto:mr.emiliolopez@gmail.com">
-            <i class="fa fa-envelope-square"></i>
-            mr.emiliolopez@gmail.com
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/emiliolopez">
-            <i class="fa fa-linkedin-square"></i>
-            https://www.linkedin.com/in/emiliolopez
-          </a>
-        </li>
-      </ul>
-    </div>
-    <h1 id="header">
-      Emilio López
-    </h1>
-    <div class="row">
-      <div class="col-md-6">
-        <div id="svg"></div>
+  <div id="container">
+    <div id="content" class="container">
+      <h1 id="header">
+        Emilio López
+      </h1>
+      <div class="row">
+        <div class="col-md-6">
+          <div id="svg"></div>
+        </div>
+        <div class="col-md-5 col-md-offset-1">
+          <div id="info-container">
+            <div id="info-" class="info-box selected">
+              <h3 class="info-box-header">
+                About Me
+              </h3>
+              <img width="450" src="/img/screenshots/emilio.jpg" />
+              <p class="info-box-text">
+                I grew up in Mexico and Miami, studied Computer Science at Stanford (Bachelor's and Master's), and enjoy hacking on random stuff. <span style="color:cyan; font-weight:500;">Now, hover over some circles on the left here to find out more about me!</span>
+              </p>
+            </div>
+            <div id="info-timetreble" class="info-box">
+              <h3 class="info-box-header">
+                TimeTreble
+              </h3>
+              <img width="450" src="/img/screenshots/timetreble.png" />
+              <p class="info-box-text">
+                TimeTreble is Visualization for the full history of Billboard Hot 100 data. It uses D3.js to visualize the data in a record for a specific year with different layers for genre, artist, and song. Clicking on an item in the song layer plays the song. User can cycle across the years of documented popular music. An auditory trip down memory lane!
+              </p>
+              <button type="button" class="btn btn-custom"><a href="http://timetreble.com" target="_blank">Check it out!</a></button>
+            </div>
+            <div id="info-premonit" class="info-box">
+              <h3 class="info-box-header">
+                Premonit
+              </h3>
+              <img width="450" src="/img/screenshots/premonit.png" />
+              <p class="info-box-text">
+                A startup I co-founded, Premonit was a social platform where users predictes on the outcomes of future events. Users could predict who's more likely to win a sports game, where political candidates will stand in the polls, etc. The goal was to aggregate users’ predictions to effectively predict future outcomes.
+              </p>
+            </div>
+            <div id="info-boutiquely" class="info-box">
+              <h3 class="info-box-header">
+                Boutique.ly
+              </h3>
+              <iframe width="450" height="253" src="//www.youtube.com/embed/gcNbvLihdUY" frameborder="0" allowfullscreen></iframe>
+              <p class="info-box-text">
+                Developed for Stanford CS210, Boutique.ly is a beautiful platform for users to create and manage online “boutiques,” where they share products they like and make money via affiliate programs with the retailers of the products they showcase.
+              </p>
+            </div>
+            <div id="info-rockmelt" class="info-box">
+              <h3 class="info-box-header">
+                RockMelt
+              </h3>
+              <img width="450" src="/img/screenshots/rockmelt.png" />
+              <p class="info-box-text">
+                RockMelt is not a browser, it's a WOWser. A browser for the socially active, RockMelt integrated Facebook/Twitter/RSS feeds and chat straight into the browser. As a member of the Platform teal at this startup, I developed the YouTube application for the browser (pictured above), the RSS Feed infrastructure, the Social Reading feature for feeds, and backend support for browser extensions.
+              </p>
+            </div>
+            <div id="info-oneboxio" class="info-box">
+              <h3 class="info-box-header">
+                OneBox.io
+              </h3>
+              <img width="450" src="/img/screenshots/oneboxio.png" />
+              <p class="info-box-text">
+                OneBox.io auto-organizes your attachments, from multiple e-mail accounts, in your preferred cloud storage service, like Dropbox, Box, Google Drive, and OneDrive. As CEO, I lead a team of three to develop OneBox.io and bring it to market.  
+              </p>
+              <button type="button" class="btn btn-custom"><a href="http://onebox.io" target="_blank">Check it out!</a></button>
+            </div>
+            <div id="info-streamonce" class="info-box">
+              <h3 class="info-box-header">
+                StreamOnce
+              </h3>
+              <img width="450" src="/img/screenshots/streamonce.png" />
+              <p class="info-box-text">
+                StreamOnce was a small startup that connected today’s business systems into their social for enterprise system. At StreamOnce, I was in charge of the User Interface/User Experience for managing StreamOnce integrations and I implemented HTML templates for displaying content from one enterprise tool in another.
+              </p>
+            </div>
+            <div id="info-jive" class="info-box">
+              <h3 class="info-box-header">
+                Jive
+              </h3>
+              <img width="450" src="/img/screenshots/jive.png" />
+              <p class="info-box-text">
+                I joined Jive as part of the acquisition of StreamOnce in April 2014. At Jive, I designed and built a Jive application for configuring StreamOnce integrations, developed RSS and Twitter integrations, and created a Facebook application that serves as a Jive client (pictured above).
+              </p>
+            </div>
+            <div id="info-stanfordcs210" class="info-box">
+              <h3 class="info-box-header">
+                Stanford CS210 Course Assistant
+              </h3>
+              <img width="450" src="/img/screenshots/stanfordcs210.png" />
+              <p class="info-box-text">
+                As a Course Assistant for CS210 (Software Projects with Corporate Partners), I developed assignments and advised student teams working on startup projects. Also, I revamped the class website (pictured above).
+              </p>
+              <button type="button" class="btn btn-custom"><a href="http://cs210.stanford.edu" target="_blank">Check it out!</a></button>
+            </div>
+            <div id="info-puzzles" class="info-box">
+              <h3 class="info-box-header">
+                Puzzles
+              </h3>
+              <img width="450" src="/img/screenshots/puzzles.png" />
+              <p class="info-box-text">
+                I enjoy making and solving puzzles. Here are some I've made for CS210: <a href="/puzzles/patriotGraphs.pdf" target="_blank">Patriot Graphs</a>, <a href="/puzzles/buriedTreasure.pdf" target="_blank">Buried Treasure</a>, and <a href="/puzzles/courseMode.pdf" target="_blank">Course Mode</a> (Hint for this one: Each page represents a letter). Give them a try and shoot me an e-mail if you want to check if you got them right!
+              </p>
+            </div>
+            <div id="info-scubadiving" class="info-box">
+              <h3 class="info-box-header">
+                Scuba Diving
+              </h3>
+              <img width="450" src="/img/screenshots/scubadiving.jpg" />
+              <p class="info-box-text">
+                From a young age, my dad took me and my brother scuba diving all over the Caribbean: Cozumel, Cancun, Curaçao, Turks and Caicos, Bahamas... I've even dived in a sunken armada ship! It's one of my favorite hobbies and if you've never tried it, do it! It's amazing.
+              </p>
+            </div> 
+            <div id="info-rocky" class="info-box">
+              <h3 class="info-box-header">
+                Rocky
+              </h3>
+              <img width="450" src="/img/screenshots/rocky.jpg" />
+              <p class="info-box-text">
+                Rocky just wants to make fetch happen, all the time. <a href="http://packdog.com/rocky-115" target="_blank">Check out his PackDog page.</a>
+              </p>
+            </div> 
+          </div>
+        </div>
       </div>
-      <div class="col-md-5 col-md-offset-1">
-        <div id="info-container">
-          <div id="info-" class="info-box selected">
-            <h3 class="info-box-header">
-              About Me
-            </h3>
-            <img width="450" src="/img/screenshots/emilio.jpg" />
-            <p class="info-box-text">
-              I grew up in Mexico and Miami, studied Computer Science at Stanford (Bachelor's and Master's), and enjoy hacking on random stuff. <span style="color:cyan; font-weight:500;">Now, hover over some circles on the left here to find out more about me!</span>
-            </p>
+    </div>
+    <div id="footer">
+      <div class="contact">
+        <div class="row">
+          <div class="col-md-6 contact-email">
+            <a href="mailto:mr.emiliolopez@gmail.com">
+              <i class="fa fa-envelope-square"></i>
+              mr.emiliolopez@gmail.com
+            </a>
           </div>
-          <div id="info-timetreble" class="info-box">
-            <h3 class="info-box-header">
-              TimeTreble
-            </h3>
-            <img width="450" src="/img/screenshots/timetreble.png" />
-            <p class="info-box-text">
-              TimeTreble is Visualization for the full history of Billboard Hot 100 data. It uses D3.js to visualize the data in a record for a specific year with different layers for genre, artist, and song. Clicking on an item in the song layer plays the song. User can cycle across the years of documented popular music. An auditory trip down memory lane!
-            </p>
+          <div class="col-md-6 contact-linkedin">
+            <a href="https://www.linkedin.com/in/emiliolopez">
+              <i class="fa fa-linkedin-square"></i>
+              https://www.linkedin.com/in/emiliolopez
+            </a>
           </div>
-          <div id="info-premonit" class="info-box">
-            <h3 class="info-box-header">
-              Premonit
-            </h3>
-            <img width="450" src="/img/screenshots/premonit.png" />
-            <p class="info-box-text">
-              A startup I co-founded, Premonit was a social platform where users predictes on the outcomes of future events. Users could predict who's more likely to win a sports game, where political candidates will stand in the polls, etc. The goal was to aggregate users’ predictions to effectively predict future outcomes.
-            </p>
-          </div>
-          <div id="info-boutiquely" class="info-box">
-            <h3 class="info-box-header">
-              Boutique.ly
-            </h3>
-            <iframe width="450" height="253" src="//www.youtube.com/embed/gcNbvLihdUY" frameborder="0" allowfullscreen></iframe>
-            <p class="info-box-text">
-              Developed for Stanford CS210, Boutique.ly is a beautiful platform for users to create and manage online “boutiques,” where they share products they like and make money via affiliate programs with the retailers of the products they showcase.
-            </p>
-          </div>
-          <div id="info-rockmelt" class="info-box">
-            <h3 class="info-box-header">
-              RockMelt
-            </h3>
-            <img width="450" src="/img/screenshots/rockmelt.png" />
-            <p class="info-box-text">
-              RockMelt is not a browser, it's a WOWser. A browser for the socially active, RockMelt integrated Facebook/Twitter/RSS feeds and chat straight into the browser. As a member of the Platform teal at this startup, I developed the YouTube application for the browser (pictured above), the RSS Feed infrastructure, the Social Reading feature for feeds, and backend support for browser extensions.
-            </p>
-          </div>
-          <div id="info-oneboxio" class="info-box">
-            <h3 class="info-box-header">
-              OneBox.io
-            </h3>
-            <img width="450" src="/img/screenshots/oneboxio.png" />
-            <p class="info-box-text">
-              OneBox.io auto-organizes your attachments, from multiple e-mail accounts, in your preferred cloud storage service, like Dropbox, Box, Google Drive, and OneDrive. As CEO, I lead a team of three to develop OneBox.io and bring it to market.  
-            </p>
-          </div>
-          <div id="info-streamonce" class="info-box">
-            <h3 class="info-box-header">
-              StreamOnce
-            </h3>
-            <img width="450" src="/img/screenshots/streamonce.png" />
-            <p class="info-box-text">
-              StreamOnce was a small startup that connected today’s business systems into their social for enterprise system. At StreamOnce, I was in charge of the User Interface/User Experience for managing StreamOnce integrations and I implemented HTML templates for displaying content from one enterprise tool in another.
-            </p>
-          </div>
-          <div id="info-jive" class="info-box">
-            <h3 class="info-box-header">
-              Jive
-            </h3>
-            <img width="450" src="/img/screenshots/jive.png" />
-            <p class="info-box-text">
-              I joined Jive as part of the acquisition of StreamOnce in April 2014. At Jive, I designed and built a Jive application for configuring StreamOnce integrations, developed RSS and Twitter integrations, and created a Facebook application that serves as a Jive client (pictured above).
-            </p>
-          </div>
-          <div id="info-stanfordcs210" class="info-box">
-            <h3 class="info-box-header">
-              Stanford CS210 Course Assistant
-            </h3>
-            <img width="450" src="/img/screenshots/stanfordcs210.png" />
-            <p class="info-box-text">
-              As a Course Assistant for CS210 (Software Projects with Corporate Partners), I developed assignments and advised student teams working on startup projects. Also, I revamped the class website (pictured above).
-            </p>
-          </div>
-          <div id="info-puzzles" class="info-box">
-            <h3 class="info-box-header">
-              Puzzles
-            </h3>
-            <img width="450" src="/img/screenshots/puzzles.png" />
-            <p class="info-box-text">
-              I enjoy making and solving puzzles. Here are some I've made for a student assignment for CS210: <a href="/puzzles/patriotGraphs.pdf" target="_blank">Patriot Graphs</a>, <a href="/puzzles/buriedTreasure.pdf" target="_blank">Buried Treasure</a>, and <a href="/puzzles/courseMode.pdf" target="_blank">Course Mode</a> (Hint for this one: Each page represents a letter). Give them a try and shoot me an e-mail if you want to check if you got them right!
-            </p>
-          </div>
-          <div id="info-scubadiving" class="info-box">
-            <h3 class="info-box-header">
-              Scuba Diving
-            </h3>
-            <img width="450" src="/img/screenshots/scubadiving.jpg" />
-            <p class="info-box-text">
-              From a young age, my dad took me and my brother scuba diving all over the Caribbean: Cozumel, Cancun, Curaçao, Turks and Caicos, Bahamas... I've even dived in a sunken armada ship! It's one of my favorite hobbies and if you've never tried it, do it! It's amazing.
-            </p>
-          </div> 
-          <div id="info-rocky" class="info-box">
-            <h3 class="info-box-header">
-              Rocky
-            </h3>
-            <img width="450" src="/img/screenshots/rocky.jpg" />
-            <p class="info-box-text">
-              Rocky just wants to make fetch happen, all the time. <a href="http://packdog.com/rocky-115" target="_blank">Check out his PackDog page.</a>
-            </p>
-          </div> 
         </div>
       </div>
     </div>
@@ -320,7 +400,7 @@ d3.json("graph.json", function(error, json) {
     //nodeSelection.select("text").style({opacity:'1.0'});
     var name = d.name.toLowerCase().replace(/\s/g, '').replace(/\./g, '');
     var elem = $("#info-" + name);
-    if (!$(elem).is(".selected")) {
+    if (elem.length > 0 && !$(elem).is(".selected")) {
       $(".info-box.selected").removeClass("selected");
       $(elem).addClass("selected");
     }
