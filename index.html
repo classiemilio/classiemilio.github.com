@@ -183,7 +183,7 @@ fieldset[disabled] .btn-custom.active {
               </h3>
               <img width="450" src="/img/screenshots/emilio.jpg" />
               <p class="info-box-text">
-                I grew up in Mexico and Miami, studied Computer Science at Stanford (Bachelor's and Master's), and enjoy hacking on random stuff. <span style="color:cyan; font-weight:500;">Now, hover over some circles on the left here to find out more about me!</span>
+                I grew up in Mexico and Miami, studied Computer Science at Stanford (B.S. '12, M.S. '13), and enjoy hacking on random stuff. <span style="color:cyan; font-weight:500;">Now, hover over some circles on the left here to find out more about me!</span>
               </p>
             </div>
             <div id="info-timetreble" class="info-box">
@@ -192,7 +192,7 @@ fieldset[disabled] .btn-custom.active {
               </h3>
               <img width="450" src="/img/screenshots/timetreble.png" />
               <p class="info-box-text">
-                TimeTreble is Visualization for the full history of Billboard Hot 100 data. It uses D3.js to visualize the data in a record for a specific year with different layers for genre, artist, and song. Clicking on an item in the song layer plays the song. User can cycle across the years of documented popular music. An auditory trip down memory lane!
+                TimeTreble is a visualization for the full history of Billboard Hot 100 data. It uses D3.js to visualize the data in a record for a specific year with different layers for genre, artist, and song. Clicking on an item in the song layer plays the song. User can cycle across the years of documented popular music. An auditory trip down memory lane!
               </p>
               <button type="button" class="btn btn-custom"><a href="http://timetreble.com" target="_blank">Check it out!</a></button>
             </div>
@@ -220,7 +220,7 @@ fieldset[disabled] .btn-custom.active {
               </h3>
               <img width="450" src="/img/screenshots/rockmelt.png" />
               <p class="info-box-text">
-                RockMelt is not a browser, it's a WOWser. A browser for the socially active, RockMelt integrated Facebook/Twitter/RSS feeds and chat straight into the browser. As a member of the Platform teal at this startup, I developed the YouTube application for the browser (pictured above), the RSS Feed infrastructure, the Social Reading feature for feeds, and backend support for browser extensions.
+                RockMelt is not a browser, it's a WOWser. A browser for the socially active, RockMelt integrated Facebook/Twitter/RSS feeds and chat straight into the browser. As a member of the Platform team at this startup, I developed the YouTube application for the browser (pictured above), the RSS Feed infrastructure, the Social Reading feature for feeds, and backend support for browser extensions.
               </p>
             </div>
             <div id="info-oneboxio" class="info-box">
@@ -229,7 +229,7 @@ fieldset[disabled] .btn-custom.active {
               </h3>
               <img width="450" src="/img/screenshots/oneboxio.png" />
               <p class="info-box-text">
-                OneBox.io auto-organizes your attachments, from multiple e-mail accounts, in your preferred cloud storage service, like Dropbox, Box, Google Drive, and OneDrive. As CEO, I lead a team of three to develop OneBox.io and bring it to market.  
+                OneBox.io auto-organizes your attachments, from multiple e-mail accounts, in your preferred cloud storage service, like Dropbox, Box, Google Drive, and OneDrive. As CEO, I led a team of three to develop OneBox.io and bring it to market.  
               </p>
               <button type="button" class="btn btn-custom"><a href="http://onebox.io" target="_blank">Check it out!</a></button>
             </div>
@@ -239,7 +239,7 @@ fieldset[disabled] .btn-custom.active {
               </h3>
               <img width="450" src="/img/screenshots/streamonce.png" />
               <p class="info-box-text">
-                StreamOnce was a small startup that connected today’s business systems into their social for enterprise system. At StreamOnce, I was in charge of the User Interface/User Experience for managing StreamOnce integrations and I implemented HTML templates for displaying content from one enterprise tool in another.
+                StreamOnce was a small startup that connected today’s business systems into their social-for-enterprise system. At StreamOnce, I was in charge of the User Interface/User Experience for managing StreamOnce integrations and I implemented HTML templates for displaying content from one enterprise tool in another.
               </p>
             </div>
             <div id="info-jive" class="info-box">
@@ -361,7 +361,14 @@ d3.json("graph.json", function(error, json) {
     .append("circle")
     .attr("r", 32)
     .attr("cy", 0)
-    .attr("cx", 0);    
+    .attr("cx", 0);  
+
+  node.append("circle")
+      .attr("x", function(d) { return (d.focus == 0 ? -32: -16); })
+      .attr("y", function(d) { return (d.focus == 0 ? -32: -16); })
+      .attr("width", function(d) { return (d.focus == 0 ? 66: 33); })
+      .attr("height", function(d) { return (d.focus == 0 ? 66: 33); })  
+      .attr("fill", "white");  
 
   node.append("image")
       .attr("xlink:href", function(d) { 
